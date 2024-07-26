@@ -2,22 +2,21 @@
     let names = [
       'Ritabrata Roy Choudhury',
       'Aakanksha Rajhans',
-      'Harsh Nayak',
       'Rohan Sharan',
       'Rebecca Falcao',
       'Priyansh Jain',
       'Okonkwo Joshua',
       'Santosh',
-    //   'Paul Pogba',
+      'Paul Pogba',
     //   'Anil Kumble'
     ];
   
     let selectedNames = [];
   
     function handleNext() {
-            localStorage.setItem('selectedContacts', JSON.stringify(selectedNames));
-            window.location.href = '/create_group';
-        }
+      localStorage.setItem('selectedContacts', JSON.stringify(selectedNames));
+      window.location.href = '/create_group';
+    }
   </script>
  <style>
     .form-box {
@@ -33,8 +32,9 @@
     .container {
       display: flex;
       justify-content: center;
-      align-items: center;
-      height: 110vh;
+      margin: auto;
+      /* align-items: center; */
+      height: 120vh;
       /* background-color: #f0f4f8; */
     }
     .checkbox {
@@ -61,12 +61,29 @@
     label{
         padding-left: 80px;
     }
+    .search-bar {
+      margin-bottom: 1rem;
+      margin-top: 1rem;
+      width: 100%;
+      padding: 0.5rem;
+      font-size: 1rem;
+      border: 2px solid #82b5e7;
+      border-radius: 8px;
+    }
   </style>
    
   <div class="container">
     <div class="form-box">
-        <h1 class="text-2xl font-bold mb-4">Select Contract</h1>
-      <ul>
+        <h1 class="text-2xl font-bold mb-4 text-center">Select Contract</h1>
+        <button type="submit" class="mt-4 px-4 py-2 bg-blue-900 text-blue-100 rounded hover:bg-blue-400 hover:text-white full-width-button" on:click={handleNext}>Create Group</button>
+        <input
+        type="text"
+        class="search-bar"
+        placeholder="Search contacts..."
+        oninput="filterNames()"
+        id="searchInput"
+      />
+        <ul>
         {#each names as name}
           <li>
             <input
@@ -79,7 +96,6 @@
           </li>
         {/each}
       </ul>
-      <button type="submit" class="mt-4 px-4 py-2 bg-blue-900 text-blue-100 rounded hover:bg-blue-400 hover:text-white full-width-button" on:click={handleNext}>Create Group</button>
     </div>
   </div>
   
