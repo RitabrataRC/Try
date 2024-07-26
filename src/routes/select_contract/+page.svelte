@@ -28,13 +28,14 @@
 <div class="container">
   <div class="form-box">
     <div class="flex items-center justify-start mb-4">
-      <svg
+       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
         stroke-width="1.5"
         stroke="currentColor"
-        class="size-6 mr-2 cursor-pointer bold-pointer"
+        class="size-6 mr-2 mt-3"
+        style="width: 48px; height: 48px;"
         on:click={handleClick}
       >
         <path
@@ -164,6 +165,7 @@
 <style>
   .form-box {
     background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent box */
+    /* box-shadow: 0 0 10px rgba(0, 0, 255, 0.5); Blue shadow */
     padding: 2rem;
     margin-bottom: 40px;
     border-radius: 8px;
@@ -188,6 +190,7 @@
     flex-direction: column;
     gap: 1rem;
   }
+
   .box {
     display: flex;
     align-items: center; /* Align items vertically */
@@ -197,32 +200,41 @@
     margin-bottom: 8px; /* Space between list items */
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
   }
+
   .flex {
     display: flex;
     align-items: center;
   }
+
   .justify-start {
     justify-content: flex-start;
   }
+
   .items-center {
     align-items: center;
   }
+
   .size-6 {
     width: 32px;
     height: 32px;
   }
+
   .bold-pointer {
-    stroke-width: 2; /* Make the pointer bold */
-  }
+  stroke-width: 2; /* Make the pointer bold */
+}
+
   .cursor-pointer {
     cursor: pointer;
   }
+
   .mr-2 {
     margin-right: 8px;
   }
+
   .mb-4 {
     margin-bottom: 16px;
   }
+
   .text-center {
     text-align: center;
     flex-grow: 1;
