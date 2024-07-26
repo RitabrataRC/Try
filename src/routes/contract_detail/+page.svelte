@@ -42,12 +42,31 @@
   });
 
   // Save form data to localStorage whenever it changes
-  $: saveFormData = () => {
-    localStorage.setItem("contractData", JSON.stringify($formData));
-  };
+  $: {
+    saveFormData(); // Ensure data is saved whenever formData changes
+  }
+
+  function saveFormData() {
+    const data = $formData;
+    localStorage.setItem("contractData", JSON.stringify(data));
+  }
 
   // Handle form submission and navigate to another page
   function handleCreateContract() {
+    // Check if all required fields are filled
+    if (
+      !$formData.selectedContact ||
+      !$formData.typeOfSplits ||
+      !$formData.paymentFrequency ||
+      !$formData.contributionAmount ||
+      !$formData.startDate ||
+      !$formData.endDate ||
+      $formData.milestones.some(milestone => !milestone.title || !milestone.description)
+    ) {
+      alert("Please fill out all required fields before submitting the form.");
+      return;
+    }
+
     saveFormData(); // Ensure data is saved before navigating
     goto("/slider");
   }
@@ -94,6 +113,16 @@
     </div>
 
     <form on:submit|preventDefault={handleCreateContract}>
+      <div class="mb-4">
+        <label for="selectedContact">Selected Contact:</label>
+        <select id="selectedContact" name="selectedContact" class="shadow-input" bind:value={$formData.selectedContact}>
+          <option value="" disabled selected>Choose option</option>
+          {#each dropdownOptions1 as option}
+            <option value={option}>{option}</option>
+          {/each}
+        </select>
+      </div>
+
       <div class="mb-4">
         <label for="dropdown1">Type of Splits:</label>
         <select id="dropdown1" name="dropdown1" class="shadow-input" bind:value={$formData.typeOfSplits}>
@@ -187,6 +216,7 @@
     </form>
   </div>
 </div>
+
 
 <style>
   .form-box {

@@ -158,13 +158,10 @@
   }
 
   .btn1{
-    background-color: customBlue;
-    color: darkSkyBlue;
+    background-color: rgba(17, 45, 68, 1);
+    color: #0092ca;
   }
 
-  .btn:hover {
-    background-color: #0056b3;
-  }
 
   .btn-light {
     font-size: 1.5rem; /* Smaller font size */

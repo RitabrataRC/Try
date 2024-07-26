@@ -7,6 +7,13 @@
     event.preventDefault();
     const formData = new FormData(event.target);
     selectedOptions = Array.from(formData.getAll("options"));
+
+    // Check if any options are selected
+    if (selectedOptions.length === 0) {
+      alert("Please select at least one option before continuing.");
+      return;
+    }
+
     goto(
       "/contract_detail?options=" +
         encodeURIComponent(selectedOptions.join(",")),
@@ -14,8 +21,8 @@
   };
 
   function handleClick() {
-        goto("whatsApp_Chat/next-page");
-    }
+    goto("whatsApp_Chat/next-page");
+  }
 </script>
 
 <div class="container">
@@ -48,9 +55,7 @@
           value="Housing Association"
           class="checkbox"
         />
-        <label for="housing-association" class="text-lg"
-          >Housing Association</label
-        >
+        <label for="housing-association" class="text-lg">Housing Association</label>
       </div>
       <div class="box">
         <input
@@ -70,9 +75,7 @@
           value="Office Space Rent Sharing"
           class="checkbox"
         />
-        <label for="office-space-rent-sharing" class="text-lg"
-          >Office Space Rent Sharing</label
-        >
+        <label for="office-space-rent-sharing" class="text-lg">Office Space Rent Sharing</label>
       </div>
       <div class="box">
         <input
@@ -82,9 +85,7 @@
           value="Travel Expense Split"
           class="checkbox"
         />
-        <label for="travel-expense-split" class="text-lg"
-          >Travel Expense Split</label
-        >
+        <label for="travel-expense-split" class="text-lg">Travel Expense Split</label>
       </div>
       <div class="box">
         <input
@@ -94,9 +95,7 @@
           value="Project Collaboration Funds"
           class="checkbox"
         />
-        <label for="project-collaboration-funds" class="text-lg"
-          >Project Collaboration Funds</label
-        >
+        <label for="project-collaboration-funds" class="text-lg">Project Collaboration Funds</label>
       </div>
       <div class="box">
         <input
@@ -106,9 +105,7 @@
           value="Shared Vacation Budget"
           class="checkbox"
         />
-        <label for="shared-vacation-budget" class="text-lg"
-          >Shared Vacation Budget</label
-        >
+        <label for="shared-vacation-budget" class="text-lg">Shared Vacation Budget</label>
       </div>
       <div class="box">
         <input
@@ -154,13 +151,11 @@
         <button
           type="button"
           class="mt-4 px-4 py-2 bg-blue-400 text-white rounded hover:bg-blue-900 hover:text-blue-100 full-width-button"
-          >Customize</button
-        >
+        >Customize</button>
         <button
           type="submit"
           class="mt-4 px-4 py-2 bg-blue-900 text-blue-100 rounded hover:bg-blue-400 hover:text-white full-width-button"
-          >Continue</button
-        >
+        >Continue</button>
       </div>
     </form>
   </div>
@@ -169,7 +164,6 @@
 <style>
   .form-box {
     background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent box */
-    /* box-shadow: 0 0 10px rgba(0, 0, 255, 0.5); Blue shadow */
     padding: 2rem;
     margin-bottom: 40px;
     border-radius: 8px;
@@ -194,7 +188,6 @@
     flex-direction: column;
     gap: 1rem;
   }
-
   .box {
     display: flex;
     align-items: center; /* Align items vertically */
@@ -204,41 +197,32 @@
     margin-bottom: 8px; /* Space between list items */
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
   }
-
   .flex {
     display: flex;
     align-items: center;
   }
-
   .justify-start {
     justify-content: flex-start;
   }
-
   .items-center {
     align-items: center;
   }
-
   .size-6 {
     width: 32px;
     height: 32px;
   }
-
   .bold-pointer {
-  stroke-width: 2; /* Make the pointer bold */
-}
-
+    stroke-width: 2; /* Make the pointer bold */
+  }
   .cursor-pointer {
     cursor: pointer;
   }
-
   .mr-2 {
     margin-right: 8px;
   }
-
   .mb-4 {
     margin-bottom: 16px;
   }
-
   .text-center {
     text-align: center;
     flex-grow: 1;
