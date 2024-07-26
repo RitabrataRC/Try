@@ -46,7 +46,8 @@
         <span class="dot"></span>
         <span class="dot"></span>
       </div>
-      <button class="btn" on:click={nextSlide}>NEXT</button>
+      <button class="btn btn-light" on:click={nextSlide}>NEXT</button>
+      <button class="btn btn1" on:click={createGroup}>CREATE GROUP</button>
     </div>
     <div class="slide">
       <div class="welcome">
@@ -62,8 +63,9 @@
         <span class="dot active"></span>
         <span class="dot"></span>
       </div>
-      <button class="btn" on:click={nextSlide}>NEXT</button>
+      <button class="btn btn-light" on:click={nextSlide}>NEXT</button>
       <button class="btn btn-light" on:click={prevSlide}>PREVIOUS</button>
+      <button class="btn btn1" on:click={createGroup}>CREATE GROUP</button>
     </div>
     <div class="slide">
       <div class="welcome">
@@ -79,8 +81,8 @@
         <span class="dot"></span>
         <span class="dot active"></span>
       </div>
-      <button class="btn btn1" on:click={createGroup}>CREATE GROUP</button>
       <button class="btn btn-light" on:click={prevSlide}>PREVIOUS</button>
+      <button class="btn btn1" on:click={createGroup}>CREATE GROUP</button>
     </div>
   </div>
 </div>

@@ -74,7 +74,7 @@
    
   <div class="container">
     <div class="form-box">
-        <h1 class="text-2xl font-bold mb-4 text-center">Select Contract</h1>
+        <h1 class="text-2xl font-bold mb-4 text-center">Select Contact</h1>
         <button type="submit" class="mt-4 px-4 py-2 bg-blue-900 text-blue-100 rounded hover:bg-blue-400 hover:text-white full-width-button" on:click={handleNext}>Create Group</button>
         <input
         type="text"

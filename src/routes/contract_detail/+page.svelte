@@ -170,6 +170,8 @@
         </div>
       {/each}
 
+      <p class="font-bold">Voting & Decisions</p>
+
       <div class="button-group">
         <button
           type="submit"
