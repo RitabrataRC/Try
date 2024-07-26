@@ -41,37 +41,35 @@
     }
   });
 
-  // Save form data to localStorage whenever it changes
+  // Subscribe to formData changes and save to localStorage
   $: {
-    saveFormData(); // Ensure data is saved whenever formData changes
+    formData.subscribe(data => {
+      localStorage.setItem("contractData", JSON.stringify(data));
+    });
   }
 
-  function saveFormData() {
-    const data = $formData;
-    localStorage.setItem("contractData", JSON.stringify(data));
-  }
-
-  // Handle form submission and navigate to another page
   function handleCreateContract() {
     // Check if all required fields are filled
-    if (
-      !$formData.selectedContact ||
-      !$formData.typeOfSplits ||
-      !$formData.paymentFrequency ||
-      !$formData.contributionAmount ||
-      !$formData.startDate ||
-      !$formData.endDate ||
-      $formData.milestones.some(milestone => !milestone.title || !milestone.description)
-    ) {
-      alert("Please fill out all required fields before submitting the form.");
-      return;
-    }
+    formData.subscribe(data => {
+      if (
+        !data.selectedContact ||
+        !data.typeOfSplits ||
+        !data.paymentFrequency ||
+        !data.contributionAmount ||
+        !data.startDate ||
+        !data.endDate ||
+        data.milestones.some(milestone => !milestone.title || !milestone.description)
+      ) {
+        alert("Please fill out all required fields before submitting the form.");
+        return;
+      }
 
-    saveFormData(); // Ensure data is saved before navigating
-    goto("/slider");
+      // Save form data and navigate
+      localStorage.setItem("contractData", JSON.stringify(data));
+      goto("/slider");
+    });
   }
 
-  // Add a new milestone input field
   function addMilestone() {
     formData.update(data => {
       data.milestones.push({ title: '', description: '' });
@@ -79,7 +77,6 @@
     });
   }
 
-  // Reset form data and clear localStorage
   function resetFormData() {
     formData.set({
       selectedContact: '',
@@ -90,9 +87,10 @@
       endDate: '',
       milestones: []
     });
-    localStorage.removeItem("contractData"); // Optional: Clear stored data
+    localStorage.removeItem("contractData"); // Clear stored data
   }
 </script>
+
 
 <div class="container">
   <div class="form-box">
